@@ -38,7 +38,7 @@ defmodule TexasHoldem.Deck do
     #   end)
     #   |> List.zip()
 
-    {cards, deck} = initial_deal(deck, player_count * 2, [])
+    {cards, deck} = deal(deck, player_count * 2, [])
 
     # hands =
     #   for _ <- 0..1 do
@@ -58,13 +58,6 @@ defmodule TexasHoldem.Deck do
       |> Enum.map(&Tuple.to_list/1)
 
     {hands, deck}
-  end
-
-  defp initial_deal(deck, iteration, cards) when iteration === 0, do: {cards, deck}
-
-  defp initial_deal(deck, iteration, cards) do
-    {card, deck} = deal(deck, 1)
-    initial_deal(deck, iteration - 1, cards ++ card)
   end
 
   @doc """
