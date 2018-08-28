@@ -27,28 +27,7 @@ defmodule TexasHoldem.Deck do
   """
   @spec initial_deal(deck, Integer.t()) :: {hands, deck}
   def initial_deal(deck, player_count) do
-    # hands = Enum.map(0..(player_count - 1), fn _ -> [] end)
-
-    # hands =
-    #   Enum.map(0..1, fn _ ->
-    #     Enum.map(0..(player_count - 1), fn _ ->
-    #       {card, deck} = deal(1, deck)
-    #       card
-    #     end)
-    #   end)
-    #   |> List.zip()
-
     {cards, deck} = deal(deck, player_count * 2, [])
-
-    # hands =
-    #   for _ <- 0..1 do
-    #     for _ <- 0..(player_count - 1) do
-    #       {card, deck} = deal(1, deck)
-    #       card
-    #     end
-    #   end
-    #   |> List.zip()
-    #   |> Enum.map(fn {a, b} -> a ++ b end)
 
     hands =
       cards
